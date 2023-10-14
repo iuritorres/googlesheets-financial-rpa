@@ -1,0 +1,6 @@
+# Visual Sutdio Code
+__pycache__/
+
+# Environment
+.venv/
+.env
