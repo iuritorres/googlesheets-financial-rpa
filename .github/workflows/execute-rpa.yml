@@ -63,5 +63,8 @@ jobs:
       TESTEE: ${{ vars.TESTEE }}
 
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
       - name: Run main file
         run: python app/main.py
