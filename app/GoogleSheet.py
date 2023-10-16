@@ -14,11 +14,11 @@ class GoogleSheet:
 	def __init__(self, spreadsheet_id: str, permission_level: GSheetsPermissionLevel) -> None:
 		self.__credentials = None
 		self.spreadsheet_id = spreadsheet_id
-		self.SCOPES = [permission_level.__str__()]
+		self.SCOPES = [permission_level]
 		self.sheet = None
 
-		self.authenticate()
-		self.init_spreadsheet()
+		# self.authenticate()
+		# self.init_spreadsheet()
 
 
 	def authenticate(self):

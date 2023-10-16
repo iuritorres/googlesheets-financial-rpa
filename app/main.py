@@ -15,10 +15,10 @@ def get_local_env_vars() -> None:
 
 SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
 
-# sheet = GoogleSheet(
-#     spreadsheet_id = SPREADSHEET_ID,
-#     permission_level= GSheetsPermissionLevel.WRITE
-# )
+sheet = GoogleSheet(
+    spreadsheet_id = SPREADSHEET_ID,
+    permission_level = GSheetsPermissionLevel.WRITE
+)
 
 get_local_env_vars()
 print(os.environ.get('TESTEE'))
