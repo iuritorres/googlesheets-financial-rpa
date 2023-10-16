@@ -1,3 +1,6 @@
 - Listen to XP API
 - Get bank statement of funds contributions and save in google sheets' spreadsheeet
 - Send a beautiful email detailing data and perhaps... with graphics
+
+- Data analysis for financial portfolio performance
+- Colect funds data from external API, to give insights about portfolio invest balance, etc.
