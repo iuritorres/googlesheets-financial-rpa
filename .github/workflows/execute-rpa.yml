@@ -44,11 +44,6 @@ jobs:
           python-version: '3.x'
           architecture: 'x64'
 
-      - name: Setup virtual environment
-        run: |
-          python3 -m venv venv
-          /venv/Scripts/activate
-
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
