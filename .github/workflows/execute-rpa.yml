@@ -44,6 +44,11 @@ jobs:
           python-version: '3.x'
           architecture: 'x64'
 
+      - name: Setup virtual environment
+        run: |
+          python3 -m venv venv
+          .\venv\Scripts\activate
+
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
@@ -65,9 +70,6 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-
-      - name: List files in the repository
-        run: ls ${{ github.workspace }}
 
       - name: Run main file
         run: python app/main.py
