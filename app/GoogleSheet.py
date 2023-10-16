@@ -1,4 +1,5 @@
 from __future__ import print_function
+from GSheetsPermissionLevel import GSheetsPermissionLevel
 
 import os.path
 
@@ -10,10 +11,10 @@ from googleapiclient.errors import HttpError
 
 
 class GoogleSheet:
-	def __init__(self, spreadsheet_id: str, scopes: list[str]) -> None:
+	def __init__(self, spreadsheet_id: str, permission_level: GSheetsPermissionLevel) -> None:
 		self.__credentials = None
 		self.spreadsheet_id = spreadsheet_id
-		self.SCOPES = scopes
+		self.SCOPES = [permission_level.__str__()]
 		self.sheet = None
 
 		self.authenticate()
@@ -40,7 +41,6 @@ class GoogleSheet:
 		try:
 			service = build('sheets', 'v4', credentials = self.__credentials)
 
-			# Call the Sheets API
 			self.sheet = service.spreadsheets()
 
 		except HttpError as error:
