@@ -11,7 +11,7 @@ on:
 
 jobs:
   collecting-data:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository code
@@ -26,7 +26,7 @@ jobs:
           echo "🖥️ The workflow is now ready to test your code on the runner."
 
       - name: List files in the repository
-        run: dir ${{ github.workspace }}
+        run: ls ${{ github.workspace }}
 
       - name: Display job's status
         run: echo "🍏 This job's status is ${{ job.status }}."
@@ -58,9 +58,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
 
-    environment: TEST
+    environment: KEYS
     env:
-      TESTEE: ${{ vars.TESTEE }}
+      TESTEE: ${{ secrets.GOOGLE_API_TOKEN }}
 
     steps:
       - name: Check out repository code
