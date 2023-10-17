@@ -11,7 +11,7 @@ on:
 
 jobs:
   collecting-data:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Check out repository code
@@ -26,7 +26,7 @@ jobs:
           echo "🖥️ The workflow is now ready to test your code on the runner."
 
       - name: List files in the repository
-        run: ls ${{ github.workspace }}
+        run: dir ${{ github.workspace }}
 
       - name: Display job's status
         run: echo "🍏 This job's status is ${{ job.status }}."
@@ -47,7 +47,7 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install -e -r requirements.txt
+          python3 -m pip install -r requirements.txt
 
       - name: Display projects info
         run: |
