@@ -47,7 +47,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo python3 -m pip install --upgrade pip
-          sudo python3 -m pip install -r requirements.txt --force
+          sudo python3 -m pip install -r requirements.txt --user
 
       - name: Display projects info
         run: |
