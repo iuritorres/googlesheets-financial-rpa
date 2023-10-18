@@ -17,7 +17,7 @@ class GoogleSheet:
 		self.SCOPES = [permission_level]
 		self.sheet = None
 
-		# self.authenticate()
+		self.authenticate()
 		# self.init_spreadsheet()
 
 
@@ -30,7 +30,9 @@ class GoogleSheet:
 				self.__credentials.refresh(Request())
 			else:
 				flow = InstalledAppFlow.from_client_secrets_file(
-					'credentials.json', self.SCOPES)
+					'credentials.json',
+					self.SCOPES
+				)
 				self.__credentials = flow.run_local_server(port = 0)
 
 			with open('token.json', 'w') as token:

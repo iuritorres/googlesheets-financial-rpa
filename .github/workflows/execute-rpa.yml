@@ -60,11 +60,20 @@ jobs:
 
     environment: KEYS
     env:
-      TESTEE: ${{ secrets.GOOGLE_API_TOKEN }}
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Run main file
-        run: python3 app/main.py
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ env.GOOGLE_CREDENTIALS }}
+
+      # - name: Run main file
+      #   run: python3 app/main.py
+
+      - name: Test
+        run: echo ok
