@@ -44,20 +44,15 @@ jobs:
           python-version: '3.x'
           architecture: 'x64'
 
-      - name: Setup environment
-        run: |
-          python3 -m venv venv
-          source venv/bin/activate
-
       - name: Install dependencies
         run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install -r requirements.txt
+          sudo python3 -m pip install --upgrade pip
+          sudo python3 -m pip install -r requirements.txt
 
       - name: Display projects info
         run: |
-          python3 -c "import sys; print(sys.version)"
-          python3 -m pip freeze
+          sudo python3 -c "import sys; print(sys.version)"
+          sudo python3 -m pip freeze
 
   run-program:
     runs-on: ubuntu-latest
@@ -78,4 +73,4 @@ jobs:
           credentials_json: ${{ env.GOOGLE_CREDENTIALS }}
 
       - name: Run main file
-        run: python3 src/main.py
+        run: sudo python3 src/main.py
