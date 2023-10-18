@@ -44,6 +44,10 @@ jobs:
           python-version: '3.x'
           architecture: 'x64'
 
+      - name: Setup environment
+        run: |
+          sudo python3 -m venv venv
+
       - name: Install dependencies
         run: |
           sudo python3 -m pip install --upgrade pip
