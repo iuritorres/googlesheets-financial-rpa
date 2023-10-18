@@ -44,15 +44,10 @@ jobs:
           python-version: '3.x'
           architecture: 'x64'
 
-      - name: Setup environment
-        run: |
-          sudo python3 -m venv venv
-          source venv/bin/activate
-
       - name: Install dependencies
         run: |
           sudo python3 -m pip install --upgrade pip
-          sudo python3 -m pip install -r requirements.txt
+          sudo python3 -m pip install -r requirements.txt --force
 
       - name: Display projects info
         run: |
