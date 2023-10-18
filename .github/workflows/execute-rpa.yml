@@ -51,7 +51,7 @@ jobs:
 
       - name: Display projects info
         run: |
-          sudo python3 -c "import sys; print(sys.version)"
+          sudo python3 -c "import sys; print(sys.version); print(sys.path)"
           sudo python3 -m pip freeze
 
   run-program:
