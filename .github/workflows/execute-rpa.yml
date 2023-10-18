@@ -47,6 +47,7 @@ jobs:
       - name: Setup environment
         run: |
           sudo python3 -m venv venv
+          sudo source venv/bin/activate
 
       - name: Install dependencies
         run: |
