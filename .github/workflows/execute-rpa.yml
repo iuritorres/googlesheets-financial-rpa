@@ -44,6 +44,11 @@ jobs:
           python-version: '3.x'
           architecture: 'x64'
 
+      - name: Setup environment
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
