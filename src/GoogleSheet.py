@@ -27,7 +27,7 @@ class GoogleSheet:
 
 	def authenticate(self):
 		try:
-			print(os.getenv('TEST'))
+			print(f"AQUI: {os.getenv('TEST')}")
 			google_credentials = to_json(os.getenv('GOOGLE_CREDENTIALS'))
 			self.__credentials = service_account.Credentials.from_service_account_info(google_credentials)
 
