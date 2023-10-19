@@ -8,7 +8,7 @@ from apiclient import discovery
 from google.oauth2 import service_account
 from googleapiclient.errors import HttpError
 
-from dotenv import load_dotenv; load_dotenv()
+# from dotenv import load_dotenv; load_dotenv()
 
 # Project
 from GSheetsPermissionLevel import GSheetsPermissionLevel

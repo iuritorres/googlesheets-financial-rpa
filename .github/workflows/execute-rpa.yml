@@ -72,6 +72,4 @@ jobs:
   
       # Run
       - name: Run main file
-        env:
-          GOOGLE_CREDENTIALS: '${{ secrets.GOOGLE_CREDENTIALS }}'
         run: sudo python3 src/main.py
