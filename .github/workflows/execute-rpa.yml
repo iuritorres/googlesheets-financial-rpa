@@ -34,9 +34,8 @@ jobs:
   build-and-run:
     runs-on: ubuntu-latest
 
-    environment: KEYS
     env:
-      GOOGLE_CREDENTIALS: '${{ secrets.GOOGLE_CREDENTIALS }}'
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
     steps:
       # Build
