@@ -17,5 +17,4 @@ import os.path
 # )
 # print(sheet_df)
 
-from dotenv import load_dotenv; load_dotenv()
 print(os.environ['TEST'])
