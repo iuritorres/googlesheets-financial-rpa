@@ -8,7 +8,7 @@ from apiclient import discovery
 from google.oauth2 import service_account
 from googleapiclient.errors import HttpError
 
-from dotenv import load_dotenv; load_dotenv()
+# from dotenv import load_dotenv; load_dotenv()
 
 # Project
 from GSheetsPermissionLevel import GSheetsPermissionLevel
@@ -27,8 +27,8 @@ class GoogleSheet:
 
 	def authenticate(self):
 		try:
-			print(os.environ['TEST'])
-			google_credentials = to_json(os.environ['GOOGLE_CREDENTIALS'])
+			print(os.getenv('TEST'))
+			google_credentials = to_json(os.getenv('GOOGLE_CREDENTIALS'))
 			self.__credentials = service_account.Credentials.from_service_account_info(google_credentials)
 
 		except HttpError as error:
