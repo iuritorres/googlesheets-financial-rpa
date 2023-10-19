@@ -34,9 +34,6 @@ jobs:
   build-and-run:
     runs-on: ubuntu-latest
 
-    env:
-      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
     steps:
       # Build
       - name: Check out repository code
@@ -44,6 +41,8 @@ jobs:
 
       - id: auth
         name: Authenticate to Google Cloud
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ env.GOOGLE_CREDENTIALS }}
@@ -73,7 +72,4 @@ jobs:
       - name: Run main file
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
-        run: |
-          echo "this is the secret: $GOOGLE_CREDENTIALS"
-          sudo python3 src/main.py
+        run: sudo python3 src/main.py
