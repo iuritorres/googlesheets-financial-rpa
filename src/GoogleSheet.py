@@ -27,8 +27,8 @@ class GoogleSheet:
 
 	def authenticate(self):
 		try:
-			print(os.environ.get('TEST'))
-			google_credentials = to_json(os.environ.get('GOOGLE_CREDENTIALS'))
+			print(os.environ['TEST'])
+			google_credentials = to_json(os.environ['GOOGLE_CREDENTIALS'])
 			self.__credentials = service_account.Credentials.from_service_account_info(google_credentials)
 
 		except HttpError as error:
