@@ -9,6 +9,10 @@ on:
   # schedule:
   #   - cron: '*/5 * * * *'
 
+permissions:
+  contents: write
+  packages: read
+
 jobs:
   collecting-data:
     runs-on: ubuntu-latest
@@ -69,17 +73,6 @@ jobs:
           sudo python3 -c "import sys; print(sys.version); print(sys.path)"
           sudo python3 -m pip freeze
 
-      - name: Load environment
-        id: loaded-env
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        run: |
-          while IFS= read -r line; do
-            echo "::set-output name=${line/=/::}"
-          done < .github/$the_env.env
-
       # Run
-      - name: Run main file
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      - name: Run main file 
         run: sudo python3 src/main.py
