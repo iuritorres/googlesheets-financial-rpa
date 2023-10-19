@@ -68,8 +68,8 @@ jobs:
       GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
     steps:
-      # - name: Check out repository code
-      #   uses: actions/checkout@v4
+      - name: Check out repository code
+        uses: actions/checkout@v4
 
       - id: auth
         name: Authenticate to Google Cloud
