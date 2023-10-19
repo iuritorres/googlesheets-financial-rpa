@@ -34,6 +34,9 @@ jobs:
   build-and-run:
     runs-on: ubuntu-latest
 
+    env:
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
     steps:
       # Build
       - name: Check out repository code
@@ -41,8 +44,6 @@ jobs:
 
       - id: auth
         name: Authenticate to Google Cloud
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ env.GOOGLE_CREDENTIALS }}
@@ -67,7 +68,13 @@ jobs:
         run: |
           sudo python3 -c "import sys; print(sys.version); print(sys.path)"
           sudo python3 -m pip freeze
-  
+
+      - name: Load environment
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        run: |
+          cat ".github/${ENV_NAME}.env" >>$GITHUB_ENV
+
       # Run
       - name: Run main file
         env:
