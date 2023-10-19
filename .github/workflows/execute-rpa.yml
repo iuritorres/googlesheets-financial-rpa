@@ -40,8 +40,8 @@ jobs:
 
     environment: TEST
     env:
-      GOOGLE_CREDENTIALS: '${{ secrets.GOOGLE_CREDENTIALS }}'
-      TEST: '${{ vars.TEST }}'
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      TEST: ${{ vars.TEST }}
 
     steps:
       # Build
