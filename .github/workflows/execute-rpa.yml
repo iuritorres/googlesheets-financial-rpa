@@ -70,10 +70,13 @@ jobs:
           sudo python3 -m pip freeze
 
       - name: Load environment
+        id: loaded-env
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
         run: |
-          cat ".github/${ENV_NAME}.env" >>$GITHUB_ENV
+          while IFS= read -r line; do
+            echo "::set-output name=${line/=/::}"
+          done < .github/$the_env.env
 
       # Run
       - name: Run main file
