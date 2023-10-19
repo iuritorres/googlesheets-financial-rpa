@@ -72,4 +72,6 @@ jobs:
   
       # Run
       - name: Run main file
-        run: sudo python3 src/main.py
+        run: |
+          echo ${{ secrets.GOOGLE_CREDENTIALS }}
+          sudo python3 src/main.py
