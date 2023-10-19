@@ -61,8 +61,8 @@ jobs:
           sudo python3 -c "import sys; print(sys.version); print(sys.path)"
           sudo python3 -m pip freeze
 
-      - name: Check out repository code
-        uses: actions/checkout@v4
+      # - name: Check out repository code
+      #   uses: actions/checkout@v4
 
       - id: auth
         name: Authenticate to Google Cloud
