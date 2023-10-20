@@ -48,6 +48,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
+        # Google Cloud OAuth
       - id: auth
         name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1

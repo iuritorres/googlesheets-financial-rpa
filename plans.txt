@@ -2,5 +2,5 @@
 - Get bank statement of funds contributions and save in google sheets' spreadsheeet
 
 - Data analysis of financial portfolio performance
-- Colect funds data from external API, to give insights about portfolio invest balance, etc.
+- Colect funds data from external API or web scrapping (perhaps statusinvest), to give insights about portfolio invest balance, etc.
 - Send a beautiful email detailing data and perhaps... with graphics
