@@ -1,5 +1,3 @@
-from enum import StrEnum
-
-class StatusInvest(StrEnum):
+class StatusInvest:
     DOMAIN = 'https://statusinvest.com.br'
     ROUTE_REAL_STATE = '/fundos-imobiliarios'
