@@ -4,6 +4,7 @@ from time import sleep
 import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import Firefox
+from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
@@ -13,7 +14,10 @@ from FundsScraping.RealState.RealStateFund import RealStateFund
 
 
 def __request_html(page_url: str) -> Firefox:
-    browser = Firefox()
+    options = FirefoxOptions()
+    options.add_argument('--headless')
+
+    browser = Firefox(options=options)
     browser.get(page_url)
 
     # Roll to the end (load all elements)
