@@ -34,6 +34,8 @@ def get_real_state_fund(fund_code: str) -> (RealStateFund|None):
     asset_value = None
     p_vp = None
     last_income = None
+    net_equity = None
+    allocation_by_segments = {}
 
     try:        
         fund_url = f'{StatusInvest.DOMAIN}{StatusInvest.ROUTE_REAL_STATE}/{fund_code.lower()}'
@@ -50,9 +52,6 @@ def get_real_state_fund(fund_code: str) -> (RealStateFund|None):
         last_income = parse_string_to_float(info_divs[15].find_element(By.CSS_SELECTOR, 'strong.value').text)
 
         # Portfolio ----> Create logic to iterate nav pages, and tabs (if needed)
-        net_equity = None
-        allocation_by_segments = {}
-
         try:
             net_equity = parse_string_to_float(browser.find_elements(By.CLASS_NAME, 'data-percentual-patrimonio')[0].find_elements(By.CLASS_NAME, 'value')[-1].text)
             portfolio_table = browser.find_element(By.ID, 'portfolio-FIIRelateds-list').find_elements(By.TAG_NAME, 'table')[-1]
