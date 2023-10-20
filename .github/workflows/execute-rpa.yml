@@ -69,7 +69,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo python3 -m pip install --upgrade pip
-          sudo python3 -m pip install -r requirements.txt --ignore-installed pyasn1-modules
+          sudo python3 -m pip install --upgrade -r requirements.txt --ignore-installed pyasn1-modules
 
       - name: Display projects info
         run: |
