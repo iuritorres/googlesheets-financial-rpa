@@ -28,6 +28,13 @@ def __request_html(page_url: str) -> Firefox:
 
 
 def get_real_state_fund(fund_code: str) -> (RealStateFund|None):
+    name = None
+    current_value = None
+    dividend_yield = None
+    asset_value = None
+    p_vp = None
+    last_income = None
+
     try:        
         fund_url = f'{StatusInvest.DOMAIN}{StatusInvest.ROUTE_REAL_STATE}/{fund_code.lower()}'
         browser = __request_html(fund_url)
@@ -62,6 +69,10 @@ def get_real_state_fund(fund_code: str) -> (RealStateFund|None):
                 allocation_by_segments[segment] = invested_percentage
         except (NoSuchElementException, IndexError):
             pass
+    except:
+        pass
+    finally:
+        browser.quit()
 
         return RealStateFund(
             name = name,
@@ -73,7 +84,3 @@ def get_real_state_fund(fund_code: str) -> (RealStateFund|None):
             net_equity = net_equity,
             allocation_by_segments = allocation_by_segments
         )
-    except:
-        pass
-    finally:
-        browser.quit()
