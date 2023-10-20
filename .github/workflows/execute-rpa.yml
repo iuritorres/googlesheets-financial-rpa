@@ -55,6 +55,11 @@ jobs:
         with:
           credentials_json: ${{ env.GOOGLE_CREDENTIALS }}
 
+      - name: Setup Geckodriver
+        uses: browser-actions/setup-geckodriver@latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}        
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
