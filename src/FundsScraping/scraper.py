@@ -73,5 +73,7 @@ def get_real_state_fund(fund_code: str) -> (RealStateFund|None):
             net_equity = net_equity,
             allocation_by_segments = allocation_by_segments
         )
+    except:
+        pass
     finally:
         browser.quit()
