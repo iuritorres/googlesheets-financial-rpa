@@ -72,10 +72,10 @@ def get_real_state_fund(fund_code: str) -> (RealStateFund|None):
                 invested_percentage = (row['INVESTIDO'] / net_equity) * 100
 
                 allocation_by_segments[segment] = invested_percentage
-        except (NoSuchElementException, IndexError):
-            pass
-    except:
-        pass
+        except (NoSuchElementException, IndexError) as error:
+            print(error)
+    except error:
+        print(error)
     finally:
         browser.quit()
 
