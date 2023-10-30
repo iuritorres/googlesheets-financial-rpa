@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 # Move to a Google Workspace module
 from GoogleSheet import GoogleSheet
 from GSheetsPermissionLevel import GSheetsPermissionLevel
@@ -18,22 +19,35 @@ from GSheetsPermissionLevel import GSheetsPermissionLevel
 
 # Web Scraping
 from FundsScraping.scraper import get_real_state_fund
+from joblib import Parallel, delayed
 
-xpci = get_real_state_fund('XPCI11')
-xpci.show_data()
 
-kncr = get_real_state_fund('KNCR11')
-kncr.show_data()
+real_state_funds = ['XPCI11', 'KNCR11', 'PVBI11', 'LVBI11']
 
-pvbi = get_real_state_fund('PVBI11')
-pvbi.show_data()
+def get_fund_data(fund_name: str) -> None:
+    return {
+        fund_name: {
+            'object': get_real_state_fund(fund_name),
+            'amount_invested': 1000
+        }
+    }
 
-lvbi = get_real_state_fund('LVBI11')
-lvbi.show_data()
+result = Parallel(n_jobs=-1)(delayed(get_fund_data)(fund_name) for fund_name in real_state_funds)
 
 real_state_portfolio = {
-    xpci: 1668.77,
-    kncr: 807.44,
-    pvbi: 522.70,
-    lvbi: 117.07,
+    fund_name: {
+        'object': fund_data['object'],
+        'amount_invested': fund_data['amount_invested']
+    }
+    for fund_dict in result
+    for fund_name, fund_data in fund_dict.items()
 }
+
+[real_state_portfolio.get(fund).get('object').show_data() for fund in real_state_portfolio.keys()]
+
+# real_state_portfolio = {
+#     xpci: 1668.77,
+#     kncr: 807.44,
+#     pvbi: 522.70,
+#     lvbi: 117.07,
+# }
