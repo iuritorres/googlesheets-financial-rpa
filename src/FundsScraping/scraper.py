@@ -15,13 +15,11 @@ from FundsScraping.RealState.RealStateFund import RealStateFund
 
 def __request_html(page_url: str) -> Firefox:
     options = FirefoxOptions()
-    # options.add_argument('--headless')
-    options.add_argument("--enable-javascript")
+    options.add_argument('--headless')
+    options.add_argument('-private')
 
     browser = Firefox(options=options)
     browser.get(page_url)
-
-    sleep(60)
 
     # Roll to the end (load all elements)
     browser.find_element(By.TAG_NAME, 'html').send_keys(Keys.END)
