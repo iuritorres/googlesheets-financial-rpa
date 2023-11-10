@@ -4,6 +4,7 @@ __pycache__/
 # Environment
 venv/
 .env
+test.html
 
 # Ignore generated credentials from google-github-actions/auth
 gha-creds-*.json
