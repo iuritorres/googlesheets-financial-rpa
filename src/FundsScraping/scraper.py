@@ -15,7 +15,8 @@ from FundsScraping.RealState.RealStateFund import RealStateFund
 
 def __request_html(page_url: str) -> Firefox:
     options = FirefoxOptions()
-    options.add_argument('--headless')
+    # options.add_argument('--headless')
+    options.add_argument("--enable-javascript")
 
     browser = Firefox(options=options)
     browser.get(page_url)
