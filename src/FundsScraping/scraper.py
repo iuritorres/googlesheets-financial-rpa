@@ -20,6 +20,8 @@ def __request_html(page_url: str) -> Firefox:
     browser = Firefox(options=options)
     browser.get(page_url)
 
+    sleep(60)
+
     # Roll to the end (load all elements)
     browser.find_element(By.TAG_NAME, 'html').send_keys(Keys.END)
     sleep(5)
