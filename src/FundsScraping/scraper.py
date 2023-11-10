@@ -16,7 +16,7 @@ from FundsScraping.RealState.RealStateFund import RealStateFund
 def __request_html(page_url: str) -> Firefox:
     options = FirefoxOptions()
     options.add_argument('--headless')
-    options.add_argument('-private')
+    options.add_argument('--private')
 
     browser = Firefox(options=options)
     browser.get(page_url)
