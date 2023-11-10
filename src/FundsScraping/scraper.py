@@ -3,7 +3,6 @@ from time import sleep
 
 import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver import FirefoxProfile
 from selenium.webdriver import Firefox
 from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.common.by import By
@@ -19,10 +18,7 @@ def __request_html(page_url: str) -> Firefox:
     options.add_argument('--headless')
     options.add_argument('--private')
 
-    firefox_profile = FirefoxProfile()
-    firefox_profile.set_preference("browser.privatebrowsing.autostart", True)
-
-    browser = Firefox(firefox_profile=firefox_profile, options=options)
+    browser = Firefox(options=options)
     browser.get(page_url)
 
     # Roll to the end (load all elements)
