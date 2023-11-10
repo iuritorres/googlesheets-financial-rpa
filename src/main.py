@@ -1,10 +1,11 @@
 import pandas as pd
+from joblib import Parallel, delayed
 
-
-# Move to a Google Workspace module
 from GoogleSheet import GoogleSheet
 from GSheetsPermissionLevel import GSheetsPermissionLevel
+from FundsScraping.scraper import get_real_state_fund
 
+# Move to a Google Workspace module
 # -- Google Sheets
 sheet = GoogleSheet(
     spreadsheet_id = '16tfSBgIJusMr69Zo9SYsNBRNSJzdRb1qFeEuCdmwa1w',
@@ -16,15 +17,13 @@ sheet_df = pd.DataFrame.from_records(
     exclude = ['majorDimension', 'range']
 )
 
+print(sheet_df)
+
 
 # Web Scraping
-from FundsScraping.scraper import get_real_state_fund
-from joblib import Parallel, delayed
-
-
 real_state_funds = ['XPCI11', 'KNCR11', 'PVBI11', 'LVBI11']
 
-def get_fund_data(fund_name: str) -> None:
+def get_fund_data(fund_name: str) -> dict:
     return {
         fund_name: {
             'object': get_real_state_fund(fund_name),
