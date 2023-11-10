@@ -44,10 +44,10 @@ def get_real_state_fund(fund_code: str) -> (RealStateFund|None):
         browser = __request_html(fund_url)
         
         # DEBUG
-        # html = browser.find_element(By.TAG_NAME, 'body').get_attribute('innerHTML')
-        # print('\n\nHTML HEREEEEEE\n\n')
-        # print(html)
-        # print('\n\n')
+        html = browser.find_element(By.TAG_NAME, 'body').get_attribute('innerHTML')
+        print('\n\nHTML HEREEEEEE\n\n')
+        print(html)
+        print('\n\n')
 
         # General data
         name = browser.find_element(By.TAG_NAME, 'h1').text.split(' ')[0]

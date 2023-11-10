@@ -7,21 +7,22 @@ from FundsScraping.scraper import get_real_state_fund
 
 # Move to a Google Workspace module
 # -- Google Sheets
-sheet = GoogleSheet(
-    spreadsheet_id = '16tfSBgIJusMr69Zo9SYsNBRNSJzdRb1qFeEuCdmwa1w',
-    permission_level = GSheetsPermissionLevel.WRITE
-)
+# sheet = GoogleSheet(
+#     spreadsheet_id = '16tfSBgIJusMr69Zo9SYsNBRNSJzdRb1qFeEuCdmwa1w',
+#     permission_level = GSheetsPermissionLevel.WRITE
+# )
 
-sheet_df = pd.DataFrame.from_records(
-    sheet.read('A:D'),
-    exclude = ['majorDimension', 'range']
-)
+# sheet_df = pd.DataFrame.from_records(
+#     sheet.read('A:D'),
+#     exclude = ['majorDimension', 'range']
+# )
 
-print(sheet_df)
+# print(sheet_df)
 
 
 # Web Scraping
-real_state_funds = ['XPCI11', 'KNCR11', 'PVBI11', 'LVBI11']
+# real_state_funds = ['XPCI11', 'KNCR11', 'PVBI11', 'LVBI11']
+real_state_funds = ['XPCI11']
 
 def get_fund_data(fund_name: str) -> dict:
     return {
