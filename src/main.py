@@ -1,30 +1,31 @@
+"""Main module."""
 import pandas as pd
 from joblib import Parallel, delayed
 
-from GoogleSheet import GoogleSheet
-from GSheetsPermissionLevel import GSheetsPermissionLevel
-from FundsScraping.scraper import get_real_state_fund
+from googleworkspace.googlesheets.google_sheet import GoogleSheet
+from googleworkspace.googlesheets.permissions_level import GSheetsPermissionLevel
+from fundsscraping.scraper import get_real_state_fund
 
 # Move to a Google Workspace module
 # -- Google Sheets
-# sheet = GoogleSheet(
-#     spreadsheet_id = '16tfSBgIJusMr69Zo9SYsNBRNSJzdRb1qFeEuCdmwa1w',
-#     permission_level = GSheetsPermissionLevel.WRITE
-# )
+sheet = GoogleSheet(
+    spreadsheet_id='16tfSBgIJusMr69Zo9SYsNBRNSJzdRb1qFeEuCdmwa1w',
+    permission_level=GSheetsPermissionLevel.WRITE
+)
 
-# sheet_df = pd.DataFrame.from_records(
-#     sheet.read('A:D'),
-#     exclude = ['majorDimension', 'range']
-# )
-
-# print(sheet_df)
+sheet_df = pd.DataFrame.from_records(
+    sheet.read('A:D'),
+    exclude=['majorDimension', 'range']
+)
 
 
 # Web Scraping
 # real_state_funds = ['XPCI11', 'KNCR11', 'PVBI11', 'LVBI11']
 real_state_funds = ['XPCI11']
 
+
 def get_fund_data(fund_name: str) -> dict:
+    """ Return a dict with fund's data """
     return {
         fund_name: {
             'object': get_real_state_fund(fund_name),
@@ -32,7 +33,9 @@ def get_fund_data(fund_name: str) -> dict:
         }
     }
 
-result = Parallel(n_jobs=-1)(delayed(get_fund_data)(fund_name) for fund_name in real_state_funds)
+
+result = Parallel(n_jobs=-1)(delayed(get_fund_data)(fund_name)
+                             for fund_name in real_state_funds)
 
 real_state_portfolio = {
     fund_name: {
@@ -43,7 +46,8 @@ real_state_portfolio = {
     for fund_name, fund_data in fund_dict.items()
 }
 
-[real_state_portfolio.get(fund).get('object').show_data() for fund in real_state_portfolio.keys()]
+for fund in real_state_portfolio.keys():
+    real_state_portfolio.get(fund).get('object').show_data()
 
 # real_state_portfolio = {
 #     xpci: 1668.77,
