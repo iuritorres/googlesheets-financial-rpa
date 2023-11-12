@@ -68,8 +68,8 @@ jobs:
 
       - name: Setup environment
         run: |
-          python3 -m venv venv
-          venv/Scripts/activate
+          python3 -m venv .venv
+          .venv/Scripts/activate
 
       - name: Install dependencies
         run: |
