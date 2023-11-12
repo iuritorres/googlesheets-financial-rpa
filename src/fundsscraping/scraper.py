@@ -98,7 +98,7 @@ def get_real_state_fund(fund_code: str) -> RealStateFund:
         except (NoSuchElementException, IndexError) as error:
             print(error)
 
-    except error:
+    except (NoSuchElementException, IndexError) as error:
         print(error)
 
     finally:
